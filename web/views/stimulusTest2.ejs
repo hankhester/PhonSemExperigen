@@ -1,0 +1,68 @@
+<%
+	suffix="ro";
+	sound_sg="resources/sounds/" + file_sg;
+	sound_pl1="resources/sounds/" + file_pref;
+	sound_pl2="resources/sounds/" + file_suff;
+
+	function playSound(soundFile) {
+		var audio  = new Audio();
+		var audioSource = document.createElement("source");
+		audioSource.src = soundFile;
+		audio.appendChild(audioSource);
+		audio.play();
+	}
+
+	function playAllSounds() {
+		setTimeout(function() { playSound(sound_sg); }, 1000);
+		setTimeout(function() { playSound(sound_pl1); }, 2700);
+
+		// Randomize which plural is played based on a simple "coin-toss" randomizer
+	//	var heads = (Math.floor(Math.random() * 2) == 0);
+
+	//	if(heads){
+	//		setTimeout(function() { playSound(sound_pl1); }, 3000);
+	//	}else{
+
+	//	}
+	}
+
+	// playAllSounds();
+
+%>
+
+<script>
+	// var continueButton = document.getElementById("1button0");
+	// continueButton.disabled = true;
+	// delayButtonEnabled(continueButton, 5);
+
+	function delayButtonEnabled(button, seconds) {
+		setTimeout(function() { button.disabled = false; }, seconds * 800);
+	}
+</script>
+
+<div style="text-align: center; line-height:130%;">
+	<table border="2" align="center" cellpadding = "20">
+		<tr>
+			<td align="center"> <%= item %></td> 	&nbsp;
+			<td class="hide"></td>
+			<td align="center"> <%= suffix+item %></td>
+		</tr>
+		<tr>
+			<td align="center"> <%= makePicture({src: frame.file_sg, width: 150}) %></td>
+			<td class="hide"></td>
+			<td align="center">
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+				&nbsp;
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<div class="trialpartWrapper" style="clear:both; text-align: center;">
+	<%= makeScale({buttons: ["Continue"], edgelabels: [""], disable: false  }) %>
+</div>
+
+
+<div style="clear: both; height: 1px;">&nbsp;</div>

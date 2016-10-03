@@ -1,0 +1,30 @@
+<div class="trialpartWrapper" style="text-align: left;">
+	Welcome!
+	<p>
+	Please put your headphones on and listen to this made-up word:
+	<%= makeSoundButton("pharon.mp3") %>
+</div>
+
+<div class="trialpartWrapper" style="text-align: left;">
+	What did you hear?
+	<!-- <%= makeTextInput({allowempty: false, matchRegExpression: "[pfshb]h?[aeiou]+r[aeiou]+[mn]", rightAnswer: "pharon", feedbackID: "#feedback", feedbackWrong: "That is not quite right, please try again.", feedbackMatch: "Pretty close! The word we had in mind was RIGHTANSWER.",  feedbackRight: "Great! The right answer is indeed RIGHTANSWER." }) %> -->
+	<input type="text" name="response1" id="response1" value="" class="textInputNotEmpty"
+	onchange="Experigen.screen().feedbackOnText(this,&quot;#feedback&quot;,&quot;[pfshb]h?[aeiou]+r[aeiou]+[mn]&quot;,&quot;pharon&quot;,&quot;That is not quite right, please try again.&quot;,&quot;Pretty close! The word we had in mind was RIGHTANSWER.&quot;,&quot;Great! The right answer is indeed RIGHTANSWER.&quot;); checkAnswer();">
+
+	<%= continueButton("►") %>
+	<p>
+	<div id="feedback"></div>
+</div>
+
+<div class="trialpartWrapper" style="text-align: left;">
+	<div id="continueButton" style="display:none">
+			<%= continueButton() %>
+	</div>
+</div>
+<script>
+	function checkAnswer() {
+		if ($('#feedback').html() != "That is not quite right, please try again.") {
+			$('#continueButton').css('display', 'inline-block');
+		}
+	}
+</script>

@@ -1,0 +1,67 @@
+<div style="text-align: left;">
+<input type="hidden" name="destination" value="demographics.csv">
+
+Thank you! Please answer a few questions.
+
+<p>
+Where are you from?
+	<select name="place" style="position: absolute; left:12em; margin-top:-2px"; id = "drpdwn">
+		<option value="none">Please choose</option>
+		<option value="USA">USA</option>
+		<option value="Canada">Canada</option>
+		<option value="UK">United Kingdom</option>
+		<option value="English">Other English-speaking country</option>
+		<option value="Other">Non-English-speaking country</option>
+	</select>
+<p>
+
+When were you born?
+	<select name="year" style="width: 10em; position: absolute; left:12em; margin-top:-2px;">
+		<option value="none">Please choose</option>
+		<option>2000-2010</option>
+		<option>1990-1999</option>
+		<option>1980-1989</option>
+		<option>1970-1979</option>
+		<option>1960-1969</option>
+		<option>1950-1959</option>
+		<option>1940-1949</option>
+		<option>1930-1939</option>
+		<option>1920-1929</option>
+	</select>
+<p>
+
+Sex:
+	<select name="sex" style="width: 10em; position: absolute; left:12em; margin-top:-2px;">
+		<option value="none">Please choose</option>
+		<option value="male">Male</option>
+		<option value="female">Female</option>
+		<option value="other">Other</option>
+	</select>
+
+<p>
+What is your native language? <br>
+	<input type="text" name="soundlike" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
+<P style="clear: both;">
+What other languages do you speak? <br>
+<input type="text" name="lang" value="" SIZE="30" MAXLENGTH="100" style="width: 30em;">
+
+<p>
+How did you approach this task?
+    	<select name="strategy" style="width: 10em; left:12em; margin-top:-2px;">
+	<option value="none">Please choose</option>
+		<option value="intuition">Just followed my intuition</option>
+		<option value="rule">Figured out a strategy/rule</option>
+	</select>
+
+
+<p>
+If you found a rule, what was it? Be as specific as possible. <br>
+
+<input type="text" name="rule" value="" SIZE="30" MAXLENGTH="200" style="width: 30em;">
+<P style="text-align: right;">
+<input type="button" value="   send   " onClick="Experigen.recordResponse(this); Experigen.saveLocalData();">
+
+
+
+
+</div>
