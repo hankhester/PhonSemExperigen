@@ -520,6 +520,19 @@ Experigen.sendForm = function (formObj) {
 			});
 
 		} else {
+			var screen = Experigen.screen();
+	    if (screen["syllNum"]) {
+				formObj.append('<input type="hidden" name="syllNum" value="' + screen["syllNum"] + '">');
+	    }
+	    if (screen["fric"]) {
+				formObj.append('<input type="hidden" name="fricative" value="' + screen["fric"] + '">');
+	    }
+	    if (screen["frame"] && screen["frame"]["animate"]) {
+				formObj.append('<input type="hidden" name="animate" value="' + screen["frame"]["animate"] + '">');
+	    }
+	    if (screen["frame"] && screen["frame"]["long"]) {
+				formObj.append('<input type="hidden" name="long" value="' + screen["frame"]["long"] + '">');
+	    }
 			formObj.append('<input type="hidden" name="deviceName" value="' + $.totalStorage('deviceName') + '">');
 			formObj.append('<input type="hidden" name="localTime" value="' + Date().toString() + '">');
 			var experiment = $.totalStorage(this.settings.experimentName) || [];
@@ -900,12 +913,33 @@ Experigen.emailLocalData = function () {
 Experigen.saveLocalData = function () {
 	var data = $.totalStorage(Experigen.settings.experimentName);
 	console.log(data);
+	var string = "";
+	for (var i = 0; i < data.length; i++) {
+		string += data[i];
+		string += '/data/';
+	}
+
+	if (screen["syllNum"]) {
+	formObj.append('<input type="hidden" name="syllNum" value="' + screen["syllNum"] + '">');
+	}
+
+	if (screen["fric"]) {
+	formObj.append('<input type="hidden" name="fricative" value="' + screen["fric"] + '">');
+	}
+
+	if (screen["frame"] && screen["frame"]["animate"]) {
+	formObj.append('<input type="hidden" name="animate" value="' + screen["frame"]["animate"] + '">');
+	}
+
+	if (screen["frame"] && screen["frame"]["long"]) {
+	formObj.append('<input type="hidden" name="long" value="' + screen["frame"]["long"] + '">');
+	}
 
 	var hiddenForm = '<form id="hiddenForm" action="saveData.php" method="post" target="_blank" style="display:none">';
 	hiddenForm += '<input id="hiddenFormInput" type="text" name="data">';
 	hiddenForm += '</form>';
 	$('#footer').append(hiddenForm);
-	document.getElementById('hiddenFormInput').value = data;
+	document.getElementById('hiddenFormInput').value = string;
 	$('#hiddenForm').submit();
 };
 
