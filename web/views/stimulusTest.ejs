@@ -28,11 +28,12 @@
 	}
 
 //	playAllSounds();
-
+console.log("stimulusTest");
 %>
 
 <div style="text-align: center; line-height:130%;">
-	<table border="2" align="center" cellpadding = "20">
+
+	<!-- <table border="2" align="center" cellpadding = "20">
 		<tr>
 			<td align="center"> <%= item %></td> 	&nbsp;
 			<td class="hide"></td>
@@ -47,7 +48,23 @@
 				<%= makePicture({src: frame.file_sg, width: 150}) %>
 			</td>
 		</tr>
-	</table>
+	</table> -->
+
+	<div class="items-group">
+		<div class="item singular">
+			<span><%= item %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</div>
+		</div>
+		<div class="item plural">
+			<span><%= item+suffix %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</div>
+		</div>
+	</div>
 	<% // playAllSounds();%>
 </div>
 

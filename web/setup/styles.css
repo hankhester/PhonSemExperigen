@@ -33,6 +33,36 @@ input, select, textarea {
 	font-size: 2ex;
 }
 
+.items-group {
+	/*text-align: center;*/
+}
+
+.item {
+	display: inline-block;
+	padding: 10px;
+	margin: 0 10px;
+	border: 1px solid black;
+	border-radius: 4px;
+	background: white;
+	box-shadow: 0px 5px 20px -4px rgba(0,0,0,0.8);
+}
+.item span:after {
+	content: "";
+	display: inline-block;
+	width: calc(100% + 20px);
+	border-top: 1px solid black;
+	margin: 0px;
+	position: relative;
+	left: -10px;
+	margin: 10px 0;
+}
+
+.plural .image {
+	margin-bottom: -6px;
+	/*position: relative;
+	top: -5px;*/
+}
+
 #footer {
 	text-align: left;
 	width: 640px;
@@ -80,11 +110,6 @@ input, select, textarea {
 	padding-top: 20px;
 }
 
-.soundbutton {
-}
-
-
-
 .scaleWrapper {
 	text-align: center;
 }
@@ -118,11 +143,10 @@ input[type="button"] {
   margin: 0 10px 0 0;
   padding: 5px 15px;
   font-size: 16px;
-  /*font-family: Times, serif;*/
   line-height: 1.8;
   appearance: none;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 input[type="button"]:focus {
