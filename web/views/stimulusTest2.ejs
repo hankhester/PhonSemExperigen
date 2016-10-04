@@ -30,33 +30,22 @@
 
 %>
 
-<script>
-	// var continueButton = document.getElementById("1button0");
-	// continueButton.disabled = true;
-	// delayButtonEnabled(continueButton, 5);
-
-	function delayButtonEnabled(button, seconds) {
-		setTimeout(function() { button.disabled = false; }, seconds * 800);
-	}
-</script>
-
 <div style="text-align: center; line-height:130%;">
-	<table border="2" align="center" cellpadding = "20">
-		<tr>
-			<td align="center"> <%= item %></td> 	&nbsp;
-			<td class="hide"></td>
-			<td align="center"> <%= suffix+item %></td>
-		</tr>
-		<tr>
-			<td align="center"> <%= makePicture({src: frame.file_sg, width: 150}) %></td>
-			<td class="hide"></td>
-			<td align="center">
+	<div class="items-group">
+		<div class="item plural">
+			<span><%= suffix+item %></span>
+			<div class="image">
 				<%= makePicture({src: frame.file_sg, width: 150}) %>
-				&nbsp;
 				<%= makePicture({src: frame.file_sg, width: 150}) %>
-			</td>
-		</tr>
-	</table>
+			</div>
+		</div>
+		<div class="item singular">
+			<span><%= item %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -66,3 +55,17 @@
 
 
 <div style="clear: both; height: 1px;">&nbsp;</div>
+<script>
+	// var continueButton = document.getElementById("1button0");
+	// continueButton.disabled = true;
+	// delayButtonEnabled(continueButton, 5);
+
+	function delayButtonEnabled(button, seconds) {
+		setTimeout(function() { button.disabled = false; }, seconds * 800);
+	}
+
+	$('body').keydown(function(event) {
+			$('.plural').removeClass('hide').addClass('slideRight');
+			$('.singular').addClass('slideLeft');
+	});
+</script>
