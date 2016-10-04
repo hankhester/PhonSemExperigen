@@ -807,6 +807,34 @@ Experigen.printScreensToConsole = function () {
 	}
 }
 
+Experigen.previewScreens = function() {
+	var hiddenForm = '<form id="hiddenForm" action="previewScreens.php" method="post" target="_blank" style="display:none">';
+	hiddenForm += '<input id="hiddenFormInput" type="text" name="screens">';
+	hiddenForm += '</form>';
+	$('#footer').append(hiddenForm);
+	// var string = JSON.stringify(Experigen._screens);
+	var string = "";
+	for (var i = 0; i < Experigen._screens.length; i++) {
+		var scr = Experigen._screens[i];
+		string += scr.item + ',';
+		if (scr.frame != null) {
+			string += scr.frame.item + ',';
+		}
+		// string += scr.view;
+		if (scr.view == "stimulusTest2.ejs") {
+			string += 'ro' + scr.item;
+		} else if (scr.view == "stimulusTest.ejs") {
+			string += scr.item + 'ek'
+		} else {
+			string += scr.view;
+		}
+		string += '/scr/';
+	}
+	console.log(string);
+	document.getElementById('hiddenFormInput').value = string;
+	$('#hiddenForm').submit();
+}
+
 Experigen.recordResponse = function (callerbutton) {
 	this.sendForm($("#currentform"));
 	this.advance(callerbutton);

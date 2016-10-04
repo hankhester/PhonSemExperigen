@@ -1,4 +1,5 @@
 Experigen.initialize = function () {
+  console.log("Experiment type: semantics\nSemantic salience: shape");
 
     var items  = this.resource("items").shuffle();
     var pictures = this.resource("pictures").shuffle();
@@ -150,7 +151,7 @@ Experigen.initialize = function () {
 				  ).shuffle();
     };
 
-		var third = Math.floor(blockTrain.length / 3);
+    var third = Math.floor(blockTrain.length / 3);
     for (var i = third; i < blockTrain.length; i += third) {
       var test = items.chooseRandom(1).pairWith("view", "threeTrialsAgoTest.ejs")[0];
       blockTrain.splice(i, 0, test);

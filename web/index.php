@@ -2,8 +2,7 @@
 	$condition = $_GET['condition'];
 	if ($condition != 1 && $condition != 2 && $condition != 3 && $condition != 4 && $condition != 5 && $condition != 6) {
 		$condition = rand(1, 6);
-	}
-	?>
+	} ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
 <html>
 <head>

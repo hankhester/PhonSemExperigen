@@ -1,4 +1,5 @@
 Experigen.initialize = function () {
+    console.log("Experiment type: both\nSemantic salience: shape");
 
     var items  = this.resource("items").shuffle();
     var pictures = this.resource("pictures").shuffle();
@@ -103,11 +104,11 @@ Experigen.initialize = function () {
 				  ).shuffle();
     };
 
-		var third = Math.floor(blockTrain.length / 3);
- 	 for (var i = third; i < blockTrain.length; i += third) {
- 		 var test = items.chooseRandom(1).pairWith("view", "threeTrialsAgoTest.ejs")[0];
- 		 blockTrain.splice(i, 0, test);
- 	 }
+    var third = Math.floor(blockTrain.length / 3);
+    for (var i = third; i < blockTrain.length; i += third) {
+      var test = items.chooseRandom(1).pairWith("view", "threeTrialsAgoTest.ejs")[0];
+      blockTrain.splice(i, 0, test);
+    }
 
     var blockTest = [].concat(items.subset("syllNum","1").subset("fric","yes").chooseNext(10,13).pairWith("frame",pictures.subset("long","yes").chooseNext(20,23)),
 
@@ -129,7 +130,7 @@ Experigen.initialize = function () {
       //  this.addStaticScreen("getgoing.ejs");
       //  this.addStaticScreen("intro.ejs");
       //  this.addStaticScreen("instructionsTrain.ejs");
-      
+
        this.addBlock(sampleItems);
        this.addBlock(blockTrain);
        this.addStaticScreen("instructionsTest.ejs");

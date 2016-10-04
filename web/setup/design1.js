@@ -1,5 +1,5 @@
 Experigen.initialize = function () {
-
+    console.log("Experiment type: both\nSemantic salience: animacy");
     var items  = this.resource("items").shuffle();
     var pictures = this.resource("pictures").shuffle();
 
