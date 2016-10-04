@@ -51,24 +51,11 @@
       $data = $_POST['data'];
       $data = explode('/data/', $data);
       $file = fopen("data/".date("m-d-Y_h.i.sa").".csv", "a+");
-      $mostHeaders = 0;
-      $headersList = [];
-      for ($i = 0; $i < count($data); $i++) {
-        $headers_data = explode('&', $data[$i]);
-        $headers = [];
-        for ($j = 0; $j < count($headers_data); $j++) {
-          $header = explode('=', $headers_data[$j]);
-          $headers[] = $header[0];
-        }
-        if (count($headers) > $mostHeaders) {
-          $mostHeaders = count($headers);
-          $headersList = $headers;
-        }
-      }
-      $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
-      for ($i = 0; $i < count($headers); $i++) {
-        fwrite($file, ",{$headers[$i]}");
-      }
+      
+      // $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
+      // for ($i = 0; $i < count($headers); $i++) {
+      //   fwrite($file, ",{$headers[$i]}");
+      // }
 
       // for each row of data...
       for ($i = 0; $i < count($data); $i++) {
@@ -80,7 +67,9 @@
         // make a key => value array based on that
         for ($j = 0; $j < count($row); $j++) {
           $cell_arr = explode('=', $row[$j]);
-          $row_arr[$cell_arr[0]] = $cell_arr[1];
+          if (count($cell_arr) > 1) {
+            $row_arr[$cell_arr[0]] = $cell_arr[1];
+          }
         }
 
         // go through each header and if there's a matching key, write the value
