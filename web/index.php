@@ -1,4 +1,9 @@
-<?php if (isset($_GET['condition'])) { ?>
+<?php if (isset($_GET['condition'])) {
+	$condition = $_GET['condition'];
+	if ($condition != 1 && $condition != 2 && $condition != 3 && $condition != 4 && $condition != 5 && $condition != 6) {
+		$condition = rand(1, 6);
+	}
+	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
 <html>
 <head>
@@ -6,16 +11,17 @@
 	<meta HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
 	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<meta HTTP-EQUIV="Expires" CONTENT="-1">
+
 	<link rel='stylesheet' href='setup/styles.css' type='text/css'>
 	<script type="text/javascript" src="_lib/experigen1-2013-3-27.js"></script>
-	<script type="text/javascript" src="setup/settings.js"></script>
-	<script type="text/javascript" src="setup/design.js"></script>
-	<script type="text/javascript" src="_lib/hanksExperigen.js"></script>
+	<script type="text/javascript" src="setup/settings<?= $condition ?>.js"></script>
+	<script type="text/javascript" src="setup/design<?= $condition ?>.js"></script>
+	<script type="text/javascript" src="_lib/experigen2-2013-3-27.js"></script>
+
 </head>
-<body>
-</body>
+<body></body>
 </html>
-<?php } else { ?>
+<?php } else {?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
 <html>
 <head>
@@ -44,34 +50,9 @@
 		} else {
 			var condition = Math.ceil(Math.random() * 6);
 		}
-		window.location = "index" + condition + ".html";
+		window.location = "?" + "condition=" + condition;
 	});
 </script>
 </body>
 </html>
 <?php } ?>
-
-<!-- <script>
-	$('input').on('click', function() {
-		var value =
-		if (this.value != "random") {
-			heads = parseInt(this.value) - 1;
-		} else {
-			heads = Math.floor(Math.random() * 4);
-		}
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = "setup/hanksDesign.js";
-		var script2 = document.createElement("script");
-		script2.type = "text/javascript";
-		script2.src = "_lib/hanksExperigen.js";
-		document.getElementsByTagName("body")[0].innerHTML = '';
-		document.getElementsByTagName("head")[0].appendChild(script);
-		setTimeout(function(){
-			document.getElementsByTagName("head")[0].appendChild(script2);
-		}, 100);
-		setTimeout(function(){
-			// Experigen.launch();
-		}, 600);
-	});
-</script> -->
