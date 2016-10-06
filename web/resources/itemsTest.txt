@@ -1,0 +1,3 @@
+item	file_sg	file_pref	file_suff	syllNum	fric
+zab	zab.mp3	rozab.mp3	zabek.mp3	1	no
+vub	vub.mp3	rovub.mp3	vubek.mp3	1	no

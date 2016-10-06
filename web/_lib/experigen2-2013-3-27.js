@@ -617,10 +617,8 @@ Experigen.loadResource = function (name) {
 ;/*
 //future encapuslation
 Experigen = function () {
-
 	var settings = Experigen.settings;
 	var initialize = Experigen.initialize;
-
 	return {
 		settings: settings,
 		initialize: initialize
@@ -731,7 +729,7 @@ Experigen.advance = function(callerButton) {
 
 	var screen = this.screen();
        //uncomment for debugging
-      //  suffix = suffix + this.showDebugInfo(screen);
+     //   suffix = suffix + this.showDebugInfo(screen);
 	this.make_into_trial(screen);
 
 	switch (screen.screentype) {
