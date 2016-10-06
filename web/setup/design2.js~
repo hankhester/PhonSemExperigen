@@ -1,0 +1,26 @@
+Experigen.initialize = function () {
+	
+	// Change these two below to change the filtering of items
+	
+	var typeOfItemsToChoose = "filler";
+	var numberOfItemsToChoose = 3;
+	
+	// Change these two above to change the filtering of items
+	
+	var items  = this.resource("items");
+	var pictures = this.resource("pictures");
+
+	items = items.pairWith("frame", pictures.shuffle())
+
+	var selectedItems =  items
+		.subset("type", typeOfItemsToChoose)
+		.chooseRandom(numberOfItemsToChoose)
+		.pairWith("order",1)
+		.pairWith("view","stimulus.ejs")
+		;
+
+	this.addBlock(selectedItems);
+	this.addStaticScreen("demographic.ejs");
+	this.addStaticScreen("finalthanks.ejs");
+	
+}

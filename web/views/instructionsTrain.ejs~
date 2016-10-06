@@ -1,0 +1,10 @@
+<div style="text-align: left;">
+
+<p>
+You are ready to go! In this next part of the experiment, you will hear some new words in an artificial language and learn how to pluralize them.  Each screen will include a singular and a plural form of some word and two pictures.  Your task is to listen to the words, look at the pictures, and <b> repeat both words you hear out loud </b>.  When you're done, push the next button to proceed to the next screen.  This phase will last for about 5 - 7 minutes. After that, you will see some more words, and push a button to choose one of two possible ways to pluralize them.
+
+
+<p>
+<%= continueButton() %>
+
+</div>

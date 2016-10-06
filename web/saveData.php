@@ -49,49 +49,32 @@
     <?php
       date_default_timezone_set('America/New_York');
       $data = $_POST['data'];
-      $data = explode('/data/', $data);
+      $data = explode(',', $data);
+
       $file = fopen("data/".date("m-d-Y_h.i.sa").".csv", "a+");
-      
-      // $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
-      // for ($i = 0; $i < count($headers); $i++) {
-      //   fwrite($file, ",{$headers[$i]}");
-      // }
+      $headers_data = explode('&', $data[0]);
+      // print_r($headers_data);
+      $headers = [];
+      for ($i = 0; $i < count($headers_data); $i++) {
+        $header = explode('=', $headers_data[$i]);
+        $headers[] = $header[0];
+      }
 
-      // for each row of data...
+      for ($i = 0; $i < count($headers); $i++) {
+        fwrite($file, ",{$headers[$i]}");
+      }
+
       for ($i = 0; $i < count($data); $i++) {
-        // write the row number
         fwrite($file, "\n{$i}");
-        // chop up the row into an array of "key=value" strings
         $row = explode('&', $data[$i]);
-        $row_arr = [];
-        // make a key => value array based on that
         for ($j = 0; $j < count($row); $j++) {
-          $cell_arr = explode('=', $row[$j]);
-          if (count($cell_arr) > 1) {
-            $row_arr[$cell_arr[0]] = $cell_arr[1];
-          }
+          $cell = explode('=', $row[$j]);
+          fwrite($file, ",{$cell[1]}");
         }
-
-        // go through each header and if there's a matching key, write the value
-        foreach ($row_arr as $key => $val) {
-          fwrite($file, ",{$key}");
-        }
+        // fwrite($file, $data[$i]);
         fwrite($file, "\n");
-        foreach ($row_arr as $key => $val) {
-          fwrite($file, ",{$val}");
-        }
       }
       fclose($file);
-
-      function getMatchingValue($s) {
-        $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
-        $s_array = explode('=', $s);
-        foreach ($headers as $h) {
-          if ($s_array[0] == $h) {
-            return $s_array[1];
-          }
-        }
-      }
     ?>
   <script>
 

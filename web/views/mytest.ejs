@@ -3,15 +3,8 @@
 	sound_sg="resources/sounds/" + file_sg;
 	sound_pl1="resources/sounds/" + file_pref;
 	sound_pl2="resources/sounds/" + file_suff;
-	if (Math.random() > 0.5) {
-		answer1 = item+"ek";
-		answer2 = "ro"+item;
-	} else {
-		answer2 = item+"ek";
-		answer1 = "ro"+item;
-	}
-
-	console.log(answer1, answer2);
+	answer1 = item+"ek";
+	answer2 = "ro"+item;
 
 	function playSound(soundFile) {
 		var audio  = new Audio();
