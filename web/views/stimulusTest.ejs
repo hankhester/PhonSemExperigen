@@ -32,7 +32,12 @@
 %>
 
 <div style="text-align: center; line-height:130%;">
+<<<<<<< HEAD
 	<table border="2" align="center" cellpadding = "20">
+=======
+
+	<!-- <table border="2" align="center" cellpadding = "20">
+>>>>>>> parent of 87a569d... added animations
 		<tr>
 			<td align="center"> <%= item %></td> 	&nbsp;
 			<td class="hide"></td>
@@ -44,10 +49,33 @@
 			<td align="center">
 				<%= makePicture({src: frame.file_sg, width: 150}) %>
 				&nbsp;
+<<<<<<< HEAD
 				<%= makePicture({src: frame.file_sg, width: 150}) %>
 			</td>
 		</tr>
 	</table>
+=======
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</td>
+		</tr>
+	</table> -->
+
+	<div class="items-group">
+		<div class="item singular">
+			<span><%= item %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</div>
+		</div>
+		<div class="item plural">
+			<span><%= item+suffix %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
+			</div>
+		</div>
+	</div>
+>>>>>>> parent of 87a569d... added animations
 	<% // playAllSounds();%>
 </div>
 
