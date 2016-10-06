@@ -33,14 +33,14 @@ input, select, textarea {
 	font-size: 2ex;
 }
 
-<<<<<<< HEAD
-=======
 .items-group {
-	/*text-align: center;*/
+	perspective: 400px;
+	perspective-origin: calc(100% - 56px);
 }
 
 .item {
 	display: inline-block;
+	position: relative;
 	padding: 10px;
 	margin: 0 10px;
 	border: 1px solid black;
@@ -48,6 +48,17 @@ input, select, textarea {
 	background: white;
 	box-shadow: 0px 5px 20px -4px rgba(0,0,0,0.8);
 }
+
+.item.singular {
+	left: -30%;
+}
+
+.item.plural {
+	left: 57%;
+	transform: rotateY(90deg);
+	opacity: 0;
+}
+
 .item span:after {
 	content: "";
 	display: inline-block;
@@ -61,11 +72,67 @@ input, select, textarea {
 
 .plural .image {
 	margin-bottom: -6px;
-	/*position: relative;
-	top: -5px;*/
 }
 
->>>>>>> parent of 87a569d... added animations
+.hide {
+	visibility: hidden;
+}
+
+.swingRight {
+	animation: swingRight 350ms ease-in-out forwards;
+	transform-origin: left;
+}
+
+.slideRight {
+	animation: slideRight 300ms ease-in-out forwards;
+}
+
+.slideLeft {
+	animation: slideLeft 250ms ease-in-out forwards;
+}
+
+@keyframes swingRight {
+	0% {
+		transform: translateX(0px) rotateY(90deg);
+		opacity: 0;
+	}
+	50% {
+		transform: translateX(-130px) rotateY(-5deg);
+		opacity: 1;
+	}
+	75% {
+		transform: translateX(-130px) rotateY(3deg);
+	}
+	100% {
+		transform: translateX(-130px) rotateY(0deg);
+		opacity: 1;
+	}
+}
+
+@keyframes slideRight {
+	0% {
+		transform: translateX(-180px) rotate(0deg);
+		opacity: 0;
+	}
+	70% {
+		transform: translateX(-110px) rotate(2deg);
+		opacity: 1
+	}
+	100% {
+		transform: translateX(-130px) rotate(0deg);
+		opacity: 1;
+	}
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(-180px);
+	}
+}
+
 #footer {
 	text-align: left;
 	width: 640px;
@@ -113,11 +180,6 @@ input, select, textarea {
 	padding-top: 20px;
 }
 
-.soundbutton {
-}
-
-
-
 .scaleWrapper {
 	text-align: center;
 }
@@ -145,8 +207,6 @@ td {
 td.hide {
 	border: 0px;
 }
-<<<<<<< HEAD
-=======
 
 input[type="button"] {
   display: inline-block;
@@ -178,4 +238,13 @@ input[type="button"]:hover {
 input[type="button"]:active{
   background-color: #ddd;
 }
->>>>>>> parent of 87a569d... added animations
+
+input[type="button"]:disabled {
+	opacity: 0.4;
+}
+
+input[type="button"]:disabled:hover {
+	opacity: 0.4;
+	background-color: #fff;
+	cursor: default;
+}
