@@ -16,7 +16,7 @@
           <div style="text-align: left;">
             <p style="text-align: center">
               Great Job!<br><br>
-              <img src="http://images.clipartpanda.com/happy-face-clipart-excited-smiley-face-clip-art-i11.jpg"/>
+              <img src="resources/smiley.jpg"/>
             </p>
           </div>
         </form>
@@ -52,7 +52,7 @@
       $data = $_POST['data'];
       $data = explode('/data/', $data);
       $file = fopen("data/".date("m-d-Y_h.i.sa").".csv", "a+");
-      $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime', 'age', 'gender'];
+      $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime', 'age', 'gender'];
 
       for ($i = 0; $i < count($headers); $i++) {
         fwrite($file, ",{$headers[$i]}");
@@ -80,9 +80,11 @@
           foreach ($row_arr as $key => $val) {
             if ($key === $headers[$j]) {
               $val = processValue($val);
-              if ($key === "frame" && in_array($val, $frames)) {
+              if (in_array(11, $frames)) {
+                print("yes");
+              }
+              if ($key === "frame" && array_key_exists(intval($val), $frames)) {
                 $val = $frames[$val];
-                print($frames[$val]);
               }
               fwrite($file, $val);
             }
@@ -106,7 +108,7 @@
       }
 
       function getMatchingValue($s) {
-        $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
+        $headers = ['userCode', 'userFileName', 'sourceurl', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'localTime'];
         $s_array = explode('=', $s);
         foreach ($headers as $h) {
           if ($s_array[0] == $h) {
