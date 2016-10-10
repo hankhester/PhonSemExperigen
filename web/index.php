@@ -2,7 +2,28 @@
 	$condition = $_GET['condition'];
 	if ($condition != 1 && $condition != 2 && $condition != 3 && $condition != 4 && $condition != 5 && $condition != 6) {
 		$condition = rand(1, 6);
-	} ?>
+	}
+	switch ($condition) {
+		case 1:
+			$design_file = "design";
+			break;
+		case 2:
+			$design_file = "designPhon";
+			break;
+		case 3:
+			$design_file = "designSem";
+			break;
+		case 4:
+			$design_file = "designSem2";
+			break;
+		case 5:
+			$design_file = "designPhon2";
+			break;
+		case 6:
+			$design_file = "designPhonSem2";
+			break;
+	}
+	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
 <html>
 <head>
@@ -13,8 +34,8 @@
 
 	<link rel='stylesheet' href='setup/styles.css' type='text/css'>
 	<script type="text/javascript" src="_lib/experigen1-2013-3-27.js"></script>
-	<script type="text/javascript" src="setup/settings<?= $condition ?>.js"></script>
-	<script type="text/javascript" src="setup/design<?= $condition ?>.js"></script>
+	<script type="text/javascript" src="setup/settings.js"></script>
+	<script type="text/javascript" src="setup/<?= $design_file ?>.js"></script>
 	<script type="text/javascript" src="_lib/experigen2-2013-3-27.js"></script>
 
 </head>
