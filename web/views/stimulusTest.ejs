@@ -66,11 +66,4 @@ console.log("stimulusTest");
 	function delayButtonEnabled(button, seconds) {
 		setTimeout(function() { button.disabled = false; }, seconds * 800);
 	}
-
-	$('body').on('keydown', function(event) {
-			$('#plural-train').removeClass('hide').addClass('slideRight');
-			$('#singular-train').addClass('slideLeft');
-			continueButton.disabled = false;
-	});
-
 </script>

@@ -1,13 +1,13 @@
 <div style="text-align: center; line-height:130%;">
 	<div class="items-group">
-		<div class="item plural">
+		<div class="item plural train">
 			<span>dogs</span>
 			<div class="image">
 				<%= makePicture({src: file_sg, width: 170}) %>
 				<%= makePicture({src: file_sg, width: 170}) %>
 			</div>
 		</div>
-		<div class="item singular">
+		<div class="item singular train">
 			<span>dog</span>
 			<div class="image">
 				<%= makePicture({src: file_sg, width: 170}) %>
@@ -32,8 +32,8 @@
 	}
 
 	$('body').keydown(function(event) {
-			$('.plural').removeClass('hide').addClass('slideRight');
-			$('.singular').addClass('slideLeft');
+			$('.plural.train').removeClass('hide').addClass('slideRight');
+			$('.singular.train').addClass('slideLeft');
 			continueButton.disabled = false;
 	});
 
