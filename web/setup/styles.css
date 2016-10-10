@@ -66,10 +66,6 @@ input, select, textarea {
 	left: calc(-33% - 190px);
 }
 
-.scaleEdgeLabel {
-	visibility: hidden;
-}
-
 .item span:after {
 	content: "";
 	display: inline-block;
@@ -174,8 +170,9 @@ input, select, textarea {
 	text-align: center;
 }
 .scaleEdgeLabel {
-	display: inline;
-	margin: .5ex;
+	/*display: inline;*/
+	/*margin: .5ex;*/
+	display: none;
 }
 .scalebuttonWrapper {
 	display: inline;

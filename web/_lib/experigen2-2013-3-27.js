@@ -109,7 +109,10 @@ Experigen.make_into_trial = function (that) {
 		str += '<div class="scaleEdgeLabel">' + edgelabels[0] + '</div>';
 		for (var i=0; i<buttons.length; i+=1) {
 			str += '<div class="scalebuttonWrapper">';
-			var responseToRecord = buttons[i] + "-" + edgelabels[0] + "-" + edgelabels[1];
+			var responseToRecord = buttons[i];
+			if (edgelabels[0] !== undefined && edgelabels[1] !== undefined) {
+				responseToRecord += edgelabels[0] + edgelabels[1];
+			}
 			str += '<input type="' + buttontype + '" value="'+ buttons[i] +'" id="' + Experigen.screen().responses + 'button' + i + '" name="scale'+ Experigen.screen().responses +'" class="scaleButton" onClick="Experigen.screen().recordResponse(' + Experigen.screen().responses + "," + "'" + responseToRecord + "'" + ');Experigen.screen().continueButtonClick(this,{hide:' +  hide + ',disable:' + disable + '});';
 
 			if (obj.rightAnswer) {

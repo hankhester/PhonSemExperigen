@@ -20,16 +20,10 @@
 
   var currentScreen = Experigen.screen();
   var earlierTrial = Experigen._screens[currentScreen.trialnumber - 4];
+  var earlierItem = earlierTrial.item;
 
-  var heads = (Math.floor(Math.random() * 2) == 0);
-
-  if (heads) {
-    var item1 = earlierTrial.item;
-    var item2 = item;
-  } else {
-    var item1 = item;
-    var item2 = earlierTrial.item;
-  }
+	var items  = Experigen.resource("items").shuffle();
+	var randomItem = items.chooseRandom(1)[0].item;
 
 %>
 
@@ -46,7 +40,11 @@
 
 <div class="trialpartWrapper" style="clear:both; text-align: center;">
   <p>Choose the correct word:</p>
-	<%= makeScale({buttons: [item1, item2], edgelabels: [""], disable: false  }) %>
+	<% if (Math.random() > 0.5) { %>
+		<%= makeScale({buttons: [earlierItem, randomItem], edgelabels: ["-(" + earlierItem, "-" + randomItem + ")"], disable: false  }) %>
+	<% } else { %>
+		<%= makeScale({buttons: [randomItem, earlierItem], edgelabels: ["-(" + randomItem, "-" + earlierItem + ")"], disable: false  }) %>
+	<% } %>
 </div>
 
 
