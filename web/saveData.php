@@ -51,16 +51,17 @@
       $data = $_POST['data'];
       $data = explode('/data/', $data);
       $file = fopen("data/".date("m-d-Y_h.i.sa").".csv", "a+");
-      
-      // $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
-      // for ($i = 0; $i < count($headers); $i++) {
-      //   fwrite($file, ",{$headers[$i]}");
-      // }
+      $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime', 'age', 'gender'];
+
+      for ($i = 0; $i < count($headers); $i++) {
+        fwrite($file, ",{$headers[$i]}");
+      }
+      fwrite($file, "\n");
 
       // for each row of data...
       for ($i = 0; $i < count($data); $i++) {
         // write the row number
-        fwrite($file, "\n{$i}");
+        fwrite($file, "{$i}");
         // chop up the row into an array of "key=value" strings
         $row = explode('&', $data[$i]);
         $row_arr = [];
@@ -73,13 +74,16 @@
         }
 
         // go through each header and if there's a matching key, write the value
-        foreach ($row_arr as $key => $val) {
-          fwrite($file, ",{$key}");
+        for ($j = 0; $j < count($headers); $j++) {
+          fwrite($file, ",");
+          // print($headers[$i]);
+          foreach ($row_arr as $key => $val) {
+            if ($key === $headers[$j]) {
+              fwrite($file, $val);
+            }
+          }
         }
         fwrite($file, "\n");
-        foreach ($row_arr as $key => $val) {
-          fwrite($file, ",{$val}");
-        }
       }
       fclose($file);
 
