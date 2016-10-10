@@ -241,3 +241,9 @@ input[type="button"]:disabled:hover {
 	background-color: #fff;
 	cursor: default;
 }
+
+.skip-to-end {
+	padding: 2px;
+	color: rgba(0,0,0,0.5);
+	background-color: #ccc;
+}

@@ -177,17 +177,13 @@ Experigen.initialize = function () {
 			      items.subset("syllNum","2").subset("fric","yes").chooseNext(8,10).pairWith("frame",pictures.subset("animate","no").chooseNext(18,20)))
 	.pairWith("view","mytest.ejs").shuffle();
 
-
-    // this.addStaticScreen("getgoing.ejs");
-    // this.addStaticScreen("intro.ejs");
-    // this.addStaticScreen("instructionsTrain.ejs");
-
-    this.addBlock(sampleItems);
-     this.addStaticScreen("instructionsKids.ejs");
-    this.addBlock(blockTrain);
-    this.addStaticScreen("instructionsTest.ejs");
-    this.addBlock(blockTest);
-    this.addStaticScreen("demographic.ejs");
-    this.addStaticScreen("finalthanks.ejs");
+  this.addStaticScreen("introQuestions.ejs");
+  this.addBlock(sampleItems);
+  this.addBlock(englishWarmup);
+  this.addStaticScreen("instructionsKids.ejs");
+  this.addBlock(blockTrain);
+  this.addStaticScreen("instructionsTest.ejs");
+  this.addBlock(blockTest);
+  this.addStaticScreen("finalthanks.ejs");
 
 }
