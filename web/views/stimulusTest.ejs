@@ -34,14 +34,14 @@ console.log("stimulusTest");
 <div style="text-align: center; line-height:130%;">
 
 	<div class="items-group">
-		<div class="item plural">
+		<div class="item plural train">
 			<span><%= item+suffix %></span>
 			<div class="image">
 				<%= makePicture({src: frame.file_sg, width: 170}) %>
 				<%= makePicture({src: frame.file_sg, width: 170}) %>
 			</div>
 		</div>
-		<div class="item singular">
+		<div class="item singular train">
 			<span><%= item %></span>
 			<div class="image">
 				<%= makePicture({src: frame.file_sg, width: 170}) %>
@@ -67,9 +67,9 @@ console.log("stimulusTest");
 		setTimeout(function() { button.disabled = false; }, seconds * 800);
 	}
 
-	$('body').keydown(function(event) {
-			$('.plural').removeClass('hide').addClass('slideRight');
-			$('.singular').addClass('slideLeft');
+	$('body').on('keydown', function(event) {
+			$('#plural-train').removeClass('hide').addClass('slideRight');
+			$('#singular-train').addClass('slideLeft');
 			continueButton.disabled = false;
 	});
 
