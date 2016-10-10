@@ -10,7 +10,8 @@ Experigen.initialize = function () {
       ,{item: "rezik"}
     ];
     var sampleItems = warmupItems.pairWith("view","warmup.ejs");
-
+    var englishWarmup = pictures.subset("item", "dog").pairWith("view", "stimulus.ejs");
+    
     //Randomly choose which subset of stimuli is paired with a suffix or a prefix
     var heads = (Math.floor(Math.random() * 4));
 
@@ -117,6 +118,7 @@ Experigen.initialize = function () {
     // this.addStaticScreen("instructionsTrain.ejs");
 
     this.addBlock(sampleItems);
+    this.addBlock(englishWarmup);
     this.addStaticScreen("instructionsKids.ejs");
     this.addBlock(blockTrain);
     this.addBlock(blockTest);

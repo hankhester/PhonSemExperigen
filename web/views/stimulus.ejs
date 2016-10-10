@@ -1,16 +1,16 @@
 <div style="text-align: center; line-height:130%;">
 	<div class="items-group">
 		<div class="item plural">
-			<span><%= item %></span>
+			<span>dogs</span>
 			<div class="image">
-				<%= makePicture({src: frame.file_sg, width: 150}) %>
-				<%= makePicture({src: frame.file_sg, width: 150}) %>
+				<%= makePicture({src: file_sg, width: 150}) %>
+				<%= makePicture({src: file_sg, width: 150}) %>
 			</div>
 		</div>
 		<div class="item singular">
-			<span><%= item %></span>
+			<span>dog</span>
 			<div class="image">
-				<%= makePicture({src: frame.file_sg, width: 150}) %>
+				<%= makePicture({src: file_sg, width: 150}) %>
 			</div>
 		</div>
 	</div>
@@ -22,3 +22,19 @@
 </div>
 
 <div style="clear: both; height: 1px;">&nbsp;</div>
+<script>
+	var continueButton = document.getElementById("1button0");
+	continueButton.disabled = true;
+	// delayButtonEnabled(continueButton, 5);
+
+	function delayButtonEnabled(button, seconds) {
+		setTimeout(function() { button.disabled = false; }, seconds * 800);
+	}
+
+	$('body').keydown(function(event) {
+			$('.plural').removeClass('hide').addClass('slideRight');
+			$('.singular').addClass('slideLeft');
+			continueButton.disabled = false;
+	});
+
+</script>

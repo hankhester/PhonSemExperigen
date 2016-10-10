@@ -10,9 +10,7 @@ Experigen.initialize = function () {
       ,{item: "rezik"}
     ];
     var sampleItems = warmupItems.pairWith("view","warmup.ejs");
-
-
-  //  var sampleItem = [].concat(items.subset("syllNum","1").pairWith("view","stimulusTest.ejs").chooseRandom(2), items.subset("syllNum","2").pairWith("view","stimulusTest.ejs").chooseRandom(2)).shuffle();
+    var englishWarmup = pictures.subset("item", "dog").pairWith("view", "stimulus.ejs");
 
     //Randomly choose which subset of stimuli is paired with a suffix or a prefix
     var heads = (Math.floor(Math.random() * 4));
