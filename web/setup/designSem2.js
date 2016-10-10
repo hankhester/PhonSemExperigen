@@ -4,7 +4,8 @@ Experigen.initialize = function () {
     var pictures = this.resource("pictures").shuffle();
 
     var warmupItems = [
-      {item: "gop"}
+      {item: ""}
+      ,{item: "gop"}
       ,{item: "dak"}
       ,{item: "fitash"}
       ,{item: "rezik"}
