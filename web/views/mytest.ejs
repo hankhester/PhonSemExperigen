@@ -1,17 +1,10 @@
 <%
-	suffix="ek";
 	sound_sg="resources/sounds/" + file_sg;
 	sound_pl1="resources/sounds/" + file_pref;
 	sound_pl2="resources/sounds/" + file_suff;
-	if (Math.random() > 0.5) {
-		answer1 = item+"ek";
-		answer2 = "ro"+item;
-	} else {
-		answer2 = item+"ek";
-		answer1 = "ro"+item;
-	}
 
-	console.log(answer1, answer2);
+	ek_answer = item+"ek";
+	ro_answer = "ro"+item;
 
 	function playSound(soundFile) {
 		var audio  = new Audio();
@@ -25,36 +18,25 @@
 		setTimeout(function() { playSound(sound_sg); }, 1000);
 		setTimeout(function() { playSound(sound_pl2); }, 2700);
 		setTimeout(function() { playSound(sound_pl1); }, 3700);
-
-		// Randomize which plural is played based on a simple "coin-toss" randomizer
-	//	var heads = (Math.floor(Math.random() * 2) == 0);
-
-	//	if(heads){
-	//		setTimeout(function() { playSound(sound_pl1); }, 3000);
-	//	}else{
-
-	//	}
 	}
-
-
 %>
 
 <div style="text-align: center; line-height:130%;">
-	<table border="2" align="center" cellpadding = "20">
-		<tr>
-			<td align="center"> <%= item %></td> 	&nbsp;
-			<td align="center"> ? </td>
-		</tr>
-		<tr>
-			<td align="center"> <%= makePicture({src: frame.file_sg, width: 150}) %></td>
-			<td align="center">
-				<%= makePicture({src: frame.file_sg, width: 150}) %>
-				&nbsp;
-				<%= makePicture({src: frame.file_sg, width: 150}) %>
-			</td>
-		</tr>
-	</table>
-
+	<div class="items-group">
+		<div class="item plural test">
+			<span>?</span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+			</div>
+		</div>
+		<div class="item singular test">
+			<span><%= item %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+			</div>
+		</div>
+	</div>
 
 </div>
 
@@ -65,7 +47,11 @@
 
 <div class="trialpartWrapper" style="clear:both; text-align: center">
 	<!-- Makes two buttons for the left and right words -->
-	<%= makeScale({buttons: [answer1,answer2], edgelabels: ["1", "2"] disable: false  }) %>
+	<% if (Math.random() < 0.5) { %>
+		<%= makeScale({buttons: [ek_answer,ro_answer], edgelabels: ["ek", "ro"], disable: false  }) %>
+	<% } else { %>
+		<%= makeScale({buttons: [ro_answer,ek_answer], edgelabels: ["ro", "ek"], disable: false  }) %>
+	<% } %>
 </div>
 
 
