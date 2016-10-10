@@ -47,6 +47,7 @@
       </div>
     <br><br>
     <?php
+      include 'resources/pictures.php';
       date_default_timezone_set('America/New_York');
       $data = $_POST['data'];
       $data = explode('/data/', $data);
@@ -76,9 +77,13 @@
         // go through each header and if there's a matching key, write the value
         for ($j = 0; $j < count($headers); $j++) {
           fwrite($file, ",");
-          // print($headers[$i]);
           foreach ($row_arr as $key => $val) {
             if ($key === $headers[$j]) {
+              $val = processValue($val);
+              if ($key === "frame" && in_array($val, $frames)) {
+                $val = $frames[$val];
+                print($frames[$val]);
+              }
               fwrite($file, $val);
             }
           }
@@ -87,8 +92,21 @@
       }
       fclose($file);
 
+      function processValue($val) {
+        switch ($val) {
+          case "stimulusTest.ejs":
+            return "ek";
+            break;
+          case "stimulusTest2.ejs":
+            return "ro";
+            break;
+          default:
+            return $val;
+        }
+      }
+
       function getMatchingValue($s) {
-        $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'response2', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
+        $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime'];
         $s_array = explode('=', $s);
         foreach ($headers as $h) {
           if ($s_array[0] == $h) {
