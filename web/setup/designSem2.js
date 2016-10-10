@@ -3,9 +3,14 @@ Experigen.initialize = function () {
     var items  = this.resource("items").shuffle();
     var pictures = this.resource("pictures").shuffle();
 
-    var sampleItems = items.chooseRandom(3)
-			       .pairWith("frame",pictures.chooseRandom(3))
-			       .pairWith("view","stimulus.ejs");
+    var warmupItems = [
+      {item: "gop"}
+      ,{item: "dak"}
+      ,{item: "fitash"}
+      ,{item: "rezik"}
+    ];
+    var sampleItems = warmupItems.pairWith("view","warmup.ejs");
+
 
   //  var sampleItem = [].concat(items.subset("syllNum","1").pairWith("view","stimulusTest.ejs").chooseRandom(2), items.subset("syllNum","2").pairWith("view","stimulusTest.ejs").chooseRandom(2)).shuffle();
 

@@ -3,9 +3,14 @@ Experigen.initialize = function () {
     var items  = this.resource("items").shuffle();
     var pictures = this.resource("pictures").shuffle();
 
-    var sampleItems = items.chooseRandom(3)
-			       .pairWith("frame",pictures.chooseRandom(3))
-			       .pairWith("view","stimulus.ejs");
+    var warmupItems = [
+      {item: "gop"}
+      ,{item: "dak"}
+      ,{item: "fitash"}
+      ,{item: "rezik"}
+    ];
+    var sampleItems = warmupItems.pairWith("view","warmup.ejs");
+
 
     //Randomly choose which subset of stimuli is paired with a suffix or a prefix
     var heads = (Math.floor(Math.random() * 4));
@@ -154,7 +159,7 @@ Experigen.initialize = function () {
       blockTrain.splice(i, 0, test);
     }
 
-    
+
   var blockTest = [].concat(items.subset("syllNum","1").subset("fric","yes").chooseNext(6,8).pairWith("frame",pictures.subset("animate","yes").chooseNext(12,14)),
 
 			      items.subset("syllNum","1").subset("fric","no").chooseNext(6,8).pairWith("frame",pictures.subset("animate","yes").chooseNext(14,16)),
@@ -176,7 +181,7 @@ Experigen.initialize = function () {
     // this.addStaticScreen("getgoing.ejs");
     // this.addStaticScreen("intro.ejs");
     // this.addStaticScreen("instructionsTrain.ejs");
-    
+
     this.addBlock(sampleItems);
      this.addStaticScreen("instructionsKids.ejs");
     this.addBlock(blockTrain);
