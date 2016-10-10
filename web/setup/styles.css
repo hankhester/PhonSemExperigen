@@ -67,7 +67,7 @@ input, select, textarea {
 }
 
 .scaleEdgeLabel {
-	color: blue;
+	visibility: hidden;
 }
 
 .item span:after {
