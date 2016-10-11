@@ -52,7 +52,7 @@
       $data = $_POST['data'];
       $data = explode('/data/', $data);
       $file = fopen("data/".date("m-d-Y_h.i.sa").".csv", "a+");
-      $headers = ['userCode', 'userFileName', 'experimentName', 'sourceurl', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'deviceName', 'localTime', 'age', 'gender'];
+      $headers = ['userCode', 'userFileName', 'condition', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'localTime', 'age', 'gender'];
 
       for ($i = 0; $i < count($headers); $i++) {
         fwrite($file, ",{$headers[$i]}");
@@ -78,6 +78,10 @@
         for ($j = 0; $j < count($headers); $j++) {
           fwrite($file, ",");
           foreach ($row_arr as $key => $val) {
+            if ($key === "sourceurl") {
+              $key = "condition";
+              $val = substr($val, strlen($val) - 1, 1);
+            }
             if ($key === $headers[$j]) {
               $val = processValue($val);
               if (in_array(11, $frames)) {
@@ -104,16 +108,6 @@
             break;
           default:
             return $val;
-        }
-      }
-
-      function getMatchingValue($s) {
-        $headers = ['userCode', 'userFileName', 'sourceurl', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'localTime'];
-        $s_array = explode('=', $s);
-        foreach ($headers as $h) {
-          if ($s_array[0] == $h) {
-            return $s_array[1];
-          }
         }
       }
     ?>
