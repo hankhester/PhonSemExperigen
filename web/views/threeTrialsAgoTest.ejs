@@ -41,9 +41,9 @@
 <div class="trialpartWrapper" style="clear:both; text-align: center;">
   <p>Choose the correct word:</p>
 	<% if (Math.random() > 0.5) { %>
-		<%= makeScale({buttons: [earlierItem, randomItem], edgelabels: ["-(" + earlierItem, "-" + randomItem + ")"], disable: false  }) %>
+		<%= makeScale({buttons: [earlierItem, randomItem], edgelabels: ["-" + earlierItem, "-" + randomItem], disable: false  }) %>
 	<% } else { %>
-		<%= makeScale({buttons: [randomItem, earlierItem], edgelabels: ["-(" + randomItem, "-" + earlierItem + ")"], disable: false  }) %>
+		<%= makeScale({buttons: [randomItem, earlierItem], edgelabels: ["-" + randomItem, "-" + earlierItem], disable: false  }) %>
 	<% } %>
 </div>
 

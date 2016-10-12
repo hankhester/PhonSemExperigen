@@ -52,10 +52,13 @@
       $data = $_POST['data'];
       $data = explode('/data/', $data);
       $file = fopen("data/".date("m-d-Y_h.i.sa").".csv", "a+");
-      $headers = ['userCode', 'userFileName', 'condition', 'response1', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'localTime', 'age', 'gender'];
+      $headers = ['userCode', 'userFileName', 'condition', 'response1', 'options', 'item', 'trialnumber', 'frame', 'view', 'syllNum', 'fricative', 'animate', 'long', 'localTime', 'age', 'gender'];
 
       for ($i = 0; $i < count($headers); $i++) {
         fwrite($file, ",{$headers[$i]}");
+        // if ($headers[$i] === "response1") {
+        //   fwrite($file, ",");
+        // }
       }
       fwrite($file, "\n");
 
@@ -84,11 +87,10 @@
             }
             if ($key === $headers[$j]) {
               $val = processValue($val);
-              if (in_array(11, $frames)) {
-                print("yes");
-              }
               if ($key === "frame" && array_key_exists(intval($val), $frames)) {
                 $val = $frames[$val];
+              } else if ($key === "response1") {
+                $val = splitResponse($val);
               }
               fwrite($file, $val);
             }
@@ -97,6 +99,15 @@
         fwrite($file, "\n");
       }
       fclose($file);
+
+      function splitResponse($val) {
+        $dash = strpos($val, "-");
+        if ($dash !== false) {
+          $val = substr($val, 0, $dash) . "," . substr($val, $dash + 1);
+          print $val;
+        }
+        return $val;
+      }
 
       function processValue($val) {
         switch ($val) {

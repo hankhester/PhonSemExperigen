@@ -48,9 +48,9 @@
 <div class="trialpartWrapper" style="clear:both; text-align: center">
 	<!-- Makes two buttons for the left and right words -->
 	<% if (Math.random() < 0.5) { %>
-		<%= makeScale({buttons: [ek_answer,ro_answer], edgelabels: ["-(ek", "-ro)"], disable: false  }) %>
+		<%= makeScale({buttons: [ek_answer,ro_answer], edgelabels: ["-ek", "-ro"], disable: false  }) %>
 	<% } else { %>
-		<%= makeScale({buttons: [ro_answer,ek_answer], edgelabels: ["-(ro", "-ek)"], disable: false  }) %>
+		<%= makeScale({buttons: [ro_answer,ek_answer], edgelabels: ["-ro", "-ek"], disable: false  }) %>
 	<% } %>
 </div>
 
