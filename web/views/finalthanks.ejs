@@ -10,8 +10,11 @@ suffixes = ["345", "798", "215", "665", "009"]
 
 code = prefixes.randomElement()+suffixes.randomElement()
 
-%>
+$(document).ready(function() {
+  Experigen.eraseLocalData();
+});
 
+%>
 
 <p>
 Thank you for your time and effort.

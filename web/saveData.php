@@ -133,8 +133,5 @@
         }
       }
     ?>
-  <script>
-
-  </script>
   </body>
 </html>
