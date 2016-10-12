@@ -114,7 +114,6 @@
         $dash = strpos($val, "-");
         if ($dash !== false) {
           $val = substr($val, 0, $dash) . "," . substr($val, $dash + 1);
-          print $val;
         } else {
           $val .= ",";
         }
