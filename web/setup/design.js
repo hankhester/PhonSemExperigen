@@ -90,8 +90,11 @@ Experigen.initialize = function () {
 				  ).shuffle();
     };
 
+    var firstTest = items.chooseRandom(1).pairWith("view", "threeTrialsAgoTest.ejs")[0];
+    blockTrain.splice(3, 0, firstTest);
+
     var third = Math.floor(blockTrain.length / 3);
-    for (var i = third; i < blockTrain.length; i += third) {
+    for (var i = third + 3; i < blockTrain.length - 3; i += third) {
       var test = items.chooseRandom(1).pairWith("view", "threeTrialsAgoTest.ejs")[0];
       blockTrain.splice(i, 0, test);
     }
