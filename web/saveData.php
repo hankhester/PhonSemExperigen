@@ -62,10 +62,15 @@
       }
       fwrite($file, "\n");
 
+      $past_first_row = false;
       // for each row of data...
       for ($i = 0; $i < count($data); $i++) {
         // write the row number
         fwrite($file, "{$i}");
+        // update past_first_row
+        if ($i > 0) {
+          $past_first_row = true;
+        }
         // chop up the row into an array of "key=value" strings
         $row = explode('&', $data[$i]);
         $row_arr = [];
@@ -79,7 +84,9 @@
 
         // go through each header and if there's a matching key, write the value
         for ($j = 0; $j < count($headers); $j++) {
-          fwrite($file, ",");
+          if ($headers[$j] !== "options") {
+            fwrite($file, ",");
+          }
           foreach ($row_arr as $key => $val) {
             if ($key === "sourceurl") {
               $key = "condition";
@@ -90,7 +97,10 @@
               if ($key === "frame" && array_key_exists(intval($val), $frames)) {
                 $val = $frames[$val];
               } else if ($key === "response1") {
+                $past_first_row = true;
                 $val = splitResponse($val);
+              } else if ($key === "localTime" && $past_first_row === false) {
+                fwrite($file, ",");
               }
               fwrite($file, $val);
             }
@@ -105,6 +115,8 @@
         if ($dash !== false) {
           $val = substr($val, 0, $dash) . "," . substr($val, $dash + 1);
           print $val;
+        } else {
+          $val .= ",";
         }
         return $val;
       }
