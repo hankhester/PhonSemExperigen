@@ -1,0 +1,75 @@
+<%
+	suffix = "ek";
+	// sound_sg="resources/sounds/" + file_sg;
+	// sound_pl1="resources/sounds/" + file_pref;
+	// sound_pl2="resources/sounds/" + file_suff;
+
+
+	function playSound(soundFile) {
+		var audio  = new Audio();
+		var audioSource = document.createElement("source");
+		audioSource.src = soundFile;
+		audio.appendChild(audioSource);
+		audio.play();
+	}
+
+	function playAllSounds() {
+		setTimeout(function() { playSound(sound_sg); }, 1000);
+		setTimeout(function() { playSound(sound_pl2); }, 2700);
+
+		// Randomize which plural is played based on a simple "coin-toss" randomizer
+	//	var heads = (Math.floor(Math.random() * 2) == 0);
+
+	//	if(heads){
+	//		setTimeout(function() { playSound(sound_pl1); }, 3000);
+	//	}else{
+
+	//	}
+	}
+
+//	playAllSounds();
+console.log("stimulusTest");
+%>
+
+<div style="text-align: center; line-height:130%;">
+
+	<div class="items-group">
+		<div class="item plural train">
+			<span><%= 'tuja ' + item + 'ja' %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+			</div>
+		</div>
+		<div class="item singular train">
+			<span><%= item %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+			</div>
+		</div>
+	</div>
+	<% // playAllSounds();%>
+</div>
+
+<div class="trialpartWrapper" style="clear:both; text-align: center; position: relative; top: 10px">
+	<%= makeScale({buttons: ["Continue"], edgelabels: [""], disable: false }) %>
+</div>
+
+
+<div style="clear: both; height: 1px;">&nbsp;</div>
+
+<script>
+	var continueButton = document.getElementById("1button0");
+	continueButton.disabled = true;
+	// delayButtonEnabled(continueButton, 5);
+
+	function delayButtonEnabled(button, seconds) {
+		setTimeout(function() { button.disabled = false; }, seconds * 800);
+	}
+
+  $('body').keydown(function(event) {
+      $('.plural.train').removeClass('hide').removeClass('slideRight').addClass('slideRightPicture');
+      $('.singular.train').removeClass('slideLeft').addClass('slideLeftPicture');
+      continueButton.disabled = false;
+  });
+</script>

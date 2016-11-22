@@ -49,20 +49,29 @@ input, select, textarea {
 }
 
 .item.singular {
-	left: -33%;
+	left: -16%;
 }
 
 .item.plural {
-	left: 57%;
+	left: 70%;
 	opacity: 0;
 }
 
 .item.plural.test {
 	opacity: 1;
-	left: calc(57% - 130px);
+	left: calc(57% - 40px);
 }
 
 .item.singular.test {
+	left: calc(-33% - 100px);
+}
+
+.item.plural.pictureTest {
+	opacity: 1;
+	left: calc(57% - 130px);
+}
+
+.item.singular.pictureTest {
 	left: calc(-33% - 190px);
 }
 
@@ -98,6 +107,14 @@ input, select, textarea {
 	animation: slideLeft 250ms ease-in-out forwards;
 }
 
+.slideLeftPicture {
+	animation: slideLeftPicture 250ms ease-in-out forwards;
+}
+
+.slideRightPicture {
+	animation: slideRightPicture 300ms ease-in-out forwards;
+}
+
 @keyframes slideRight {
 	0% {
 		transform: translateX(-180px) rotate(0deg);
@@ -119,6 +136,30 @@ input, select, textarea {
 	}
 	100% {
 		transform: translateX(-190px);
+	}
+}
+
+@keyframes slideLeftPicture {
+	0% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(-300px);
+	}
+}
+
+@keyframes slideRightPicture {
+	0% {
+		transform: translateX(-180px) rotate(0deg);
+		opacity: 0;
+	}
+	70% {
+		transform: translateX(-140px) rotate(2deg);
+		opacity: 1
+	}
+	100% {
+		transform: translateX(-200px) rotate(0deg);
+		opacity: 1;
 	}
 }
 

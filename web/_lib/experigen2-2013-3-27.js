@@ -301,6 +301,62 @@ Experigen.make_into_trial = function (that) {
 		return str;
 	}
 
+	that.makeVideo = function(obj) {
+		if (typeof obj==="string") {
+			obj = {src: obj}
+		}
+		if (typeof obj!=="object") {
+			obj = {src: ""}
+		}
+		if (!obj.initValue) {
+			obj.scr = "";
+		}
+		obj.src = "resources/videos/" + obj.src + ".mp4";
+
+		var str = "";
+		str += "<video ";
+		if (obj.src) {
+			str += "src='" + obj.src + "' ";
+		}
+		if (obj.width) {
+			str += "width='" + obj.width + "' ";
+		}
+		if (obj.height) {
+			// str += "height='" + obj.height + "' ";
+		}
+		if (obj.alt) {
+			str += "alt='" + obj.alt + "' ";
+		}
+		if (obj["class"]) {
+			str += "class='" + obj["class"] + "' ";
+		}
+		if (obj.id) {
+			str += "id='" + obj.id + "' ";
+		}
+		if (obj.style) {
+			str += "style='" + obj.style + "' ";
+		}
+		if (obj.onclick) {
+			str += "onclick='" + obj.onclick + "' ";
+		}
+		if (obj.onblur) {
+			str += "onblur='" + obj.onblur + "' ";
+		}
+		if (obj.onfocus) {
+			str += "onfocus='" + obj.onfocus + "' ";
+		}
+		if (obj.onchange) {
+			str += "onchange='" + obj.onchange + "' ";
+		}
+		str += "autoplay ";
+		str += "loop ";
+		str += "muted ";
+		str += "></video>";
+		console.log(str);
+		return str;
+
+	}
+
 
 	that.checkEmpty = function (obj) {
 

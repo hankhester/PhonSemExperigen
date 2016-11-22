@@ -1,0 +1,63 @@
+<%
+	// sound_sg="resources/sounds/" + file_sg;
+	// sound_pl1="resources/sounds/" + file_pref;
+	// sound_pl2="resources/sounds/" + file_suff;
+
+  ek_answer = "tuek " + item + "ek";
+	ja_answer = "tuja " + item + "ja";
+
+	function playSound(soundFile) {
+		var audio  = new Audio();
+		var audioSource = document.createElement("source");
+		audioSource.src = soundFile;
+		audio.appendChild(audioSource);
+		audio.play();
+	}
+
+	function playAllSounds() {
+		setTimeout(function() { playSound(sound_sg); }, 1000);
+		setTimeout(function() { playSound(sound_pl2); }, 2700);
+		setTimeout(function() { playSound(sound_pl1); }, 3700);
+	}
+%>
+
+<div style="text-align: center; line-height:130%;">
+	<div class="items-group">
+		<div class="item plural pictureTest">
+			<span>?</span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+			</div>
+		</div>
+		<div class="item singular pictureTest">
+			<span><%= item %></span>
+			<div class="image">
+				<%= makePicture({src: frame.file_sg, width: 170}) %>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div style="text-align: center; line-height:130%;">
+	<%	// playAllSounds();  %>
+</div>
+
+
+<div class="trialpartWrapper" style="clear:both; text-align: center">
+	<!-- Makes two buttons for the left and right words -->
+	<% if (Math.random() < 0.5) { %>
+		<%= makeScale({buttons: [ek_answer,ja_answer], edgelabels: ["-ek", "-ja"], disable: false  }) %>
+	<% } else { %>
+		<%= makeScale({buttons: [ja_answer,ek_answer], edgelabels: ["-ja", "-ek"], disable: false  }) %>
+	<% } %>
+</div>
+
+
+<div class="trialpartWrapper" style="clear:both; text-align: center;">
+	<%= makeScale({buttons: ["Continue"], edgelabels: [""], disable: false  }) %>
+</div>
+
+
+<div style="clear: both; height: 1px;">&nbsp;</div>

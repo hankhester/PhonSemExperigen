@@ -1,8 +1,8 @@
 <%
 	suffix="ro";
-	sound_sg="resources/sounds/" + file_sg;
-	sound_pl1="resources/sounds/" + file_pref;
-	sound_pl2="resources/sounds/" + file_suff;
+	// sound_sg="resources/sounds/" + file_sg;
+	// sound_pl1="resources/sounds/" + file_pref;
+	// sound_pl2="resources/sounds/" + file_suff;
 
 	function playSound(soundFile) {
 		var audio  = new Audio();
@@ -36,14 +36,13 @@
 		<div class="item plural train">
 			<span><%= suffix+item %></span>
 			<div class="image">
-				<%= makePicture({src: frame.file_sg, width: 170}) %>
-				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<%= makeVideo({src: frame.item + "_pl", width: 250}) %>
 			</div>
 		</div>
 		<div class="item singular train">
 			<span><%= item %></span>
 			<div class="image">
-				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<%= makeVideo({src: frame.item, width: 250}) %>
 			</div>
 		</div>
 	</div>

@@ -1,14 +1,16 @@
 <?php if (isset($_GET['condition'])) {
 	$condition = $_GET['condition'];
-	if ($condition != 1 && $condition != 2 && $condition != 3 && $condition != 4 && $condition != 5 && $condition != 6) {
+	if ($condition != 1 && $condition != 2 && $condition != 3 && $condition != 4 && $condition != 5 && $condition != 6 && $condition != 'Nov. 18th') {
 		$condition = rand(1, 6);
 	}
 	switch ($condition) {
 		case 1:
-			$design_file = "design";
+			// $design_file = "design";
+			$design_file = "PhonVideoPilotA";
 			break;
 		case 2:
-			$design_file = "designPhon";
+			// $design_file = "designPhon";
+			$design_file = "PhonVideoPilotB";
 			break;
 		case 3:
 			$design_file = "designSem";
@@ -21,6 +23,9 @@
 			break;
 		case 6:
 			$design_file = "designPhonSem2";
+			break;
+		case 'Nov. 18th':
+			$design_file = '11_18_Design';
 			break;
 	}
 	?>
@@ -60,12 +65,15 @@
 		<input type="button" value="4">
 		<input type="button" value="5">
 		<input type="button" value="6">
+		<input type="button" value="Nov. 18th">
 		<br><br>
 		<input type="button" value="random">
 	</div>
 <script>
 	$('input').on('click', function() {
-		if (this.value != "random") {
+		if (this.value == 'Nov. 18th') {
+			var condition = this.value;
+		} else if (this.value != "random") {
 			var condition = parseInt(this.value);
 		} else {
 			var condition = Math.ceil(Math.random() * 6);
