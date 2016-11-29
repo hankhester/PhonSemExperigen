@@ -31,20 +31,27 @@
 console.log("stimulusTest");
 %>
 
-<div style="text-align: center; line-height:130%;">
+<div style="text-align: center; line-height:100%;">
 
 	<div class="items-group">
 		<div class="item plural train">
-			<span><%= 'tuja ' + item + 'ja' %></span>
+			<span><%= 'tuja ' + item %></span>
 			<div class="image">
-				<%= makePicture({src: frame.file_sg, width: 170}) %>
-				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<% if (Math.random() < 0.5) {  %>
+				   <%= makePicture({src: frame.file_sg, width: 150}) %>
+				   <%=  makePicture({src: frame.file_sg, width: 150}) %>
+				<%}
+				else {	%>
+ 				    <%= makePicture({src: frame.file_sg, width: 150}) %>
+				    <%= makePicture({src: frame.file_sg, width: 150}) %>
+				    <%= makePicture({src: frame.file_sg, width: 150}) %>
+				<% } %>
 			</div>
 		</div>
 		<div class="item singular train">
 			<span><%= item %></span>
 			<div class="image">
-				<%= makePicture({src: frame.file_sg, width: 170}) %>
+				<%= makePicture({src: frame.file_sg, width: 150}) %>
 			</div>
 		</div>
 	</div>

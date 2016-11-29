@@ -3,7 +3,7 @@ Experigen.initialize = function () {
   var items  = this.resource("items").shuffle();
   var pictures = this.resource("pictures").shuffle();
 
-  var numberOfTrainingItems = 12;
+  var numberOfTrainingItems = 10;
 
   var oneSyllWords = items.subset("syllNum", "1").chooseRandom(17).map(function(word) {return word.item;}).shuffle();
   var twoSyllWords = items.subset("syllNum", "2").chooseRandom(17).map(function(word) {return word.item;}).shuffle();

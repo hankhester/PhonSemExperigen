@@ -6,7 +6,7 @@ Experigen.initialize = function () {
   var numberOfTrainingItems = 11;
 
   var animals = ['bird', 'cat', 'chicken', 'crab', 'deer', 'dog', 'duck', 'elephant', 'giraffe', 'hippo', 'horse', 'lion', 'penguin', 'pig', 'rabbit', 'tiger', 'turtle', 'zebra'].shuffle();
-  var objects = ['baloon', 'basket', 'basketball', 'book', 'bed', 'chair', 'clock', 'cup', 'flashlight', 'frisbee', 'guitar', 'kettle', 'pillow', 'pen', 'lighthouse', 'lampshade', 'toothbrush', 'umbrella', 'bowl'].shuffle(); // one more here to account for the generalization test
+  var objects = ['baloon', 'basket', 'basketball', 'book', 'bed', 'chair', 'clock', 'cup', 'flashlight', 'frisbee', 'guitar', 'kettle', 'pillow', 'pen', 'lighthouse', 'lampshade', 'toothbrush', 'umbrella', 'bowl', 'fork'].shuffle(); // two more here to account for the generalization test
 
   // we need 17 unique words for each block(not including the generalization test)
   var oneSyllableWords = items.subset("syllNum", "1").chooseRandom(17).map(function(obj) { return obj.item; });
