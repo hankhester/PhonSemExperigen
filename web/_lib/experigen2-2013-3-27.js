@@ -893,14 +893,7 @@ Experigen.previewScreens = function() {
 		if (scr.frame != null) {
 			string += scr.frame.item + ',';
 		}
-		// string += scr.view;
-		if (scr.view == "stimulusTest2.ejs") {
-			string += 'ro' + scr.item;
-		} else if (scr.view == "stimulusTest.ejs") {
-			string += scr.item + 'ek'
-		} else {
-			string += scr.view;
-		}
+		string += scr.view;
 		string += '/scr/';
 	}
 	console.log(string);

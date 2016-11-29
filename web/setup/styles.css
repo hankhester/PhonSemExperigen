@@ -236,7 +236,7 @@ td.hide {
 	border: 0px;
 }
 
-input[type="button"] {
+input[type="button"], button {
   display: inline-block;
   margin: 0 10px 0 0;
   padding: 5px 15px;
@@ -247,31 +247,32 @@ input[type="button"] {
   border-radius: 4px;
 }
 
-input[type="button"]:focus {
+input[type="button"]:focus, button:focus {
   outline: none
 }
 
-input[type="button"] {
+input[type="button"], button {
   color: #000;
   background-color: #fff;
   border: none;
-	box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+  margin: 5px;
 }
 
-input[type="button"]:hover {
+input[type="button"]:hover, button:hover {
   background-color: #eee;
 	cursor: pointer;
 }
 
-input[type="button"]:active{
+input[type="button"]:active, button:active {
   background-color: #ddd;
 }
 
-input[type="button"]:disabled {
+input[type="button"]:disabled, button:disabled {
 	opacity: 0.4;
 }
 
-input[type="button"]:disabled:hover {
+input[type="button"]:disabled:hover, button:disabled:hover {
 	opacity: 0.4;
 	background-color: #fff;
 	cursor: default;
