@@ -15,7 +15,7 @@ Experigen.initialize = function () {
   var testAnimals = animals.slice(numberOfTrainingItems, animals.length);
 
   var trainObjects = objects.slice(0, numberOfTrainingItems);
-  var testObjects = objects.slice(0, numberOfTrainingItems);
+  var testObjects = objects.slice(numberOfTrainingItems, objects.length);
 
 // for both animate and inanimate: 11 training, 5 testing, 1 additional item that is both trained and tested
   var animateTrainWords = [], animateTestWords = [], inanimateTrainWords = [], inanimateTestWords = [],

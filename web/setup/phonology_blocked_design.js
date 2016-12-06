@@ -3,7 +3,7 @@ Experigen.initialize = function () {
   var items  = this.resource("items").shuffle();
   var pictures = this.resource("pictures").shuffle();
   var videos = this.resource("videos").shuffle();
-  var numberOfTrainingItems = 11;
+  var numberOfTrainingItems = 9;
 
   var animals = ['bird', 'cat', 'chicken', 'crab', 'deer', 'dog', 'duck', 'elephant', 'giraffe', 'hippo', 'horse', 'lion', 'penguin', 'pig', 'rabbit', 'tiger', 'turtle', 'zebra'].shuffle();
   var objects = ['baloon', 'basket', 'basketball', 'book', 'bed', 'chair', 'clock', 'cup', 'flashlight', 'frisbee', 'guitar', 'kettle', 'pillow', 'pen', 'lighthouse', 'lampshade', 'toothbrush', 'umbrella', 'bowl', 'fork'].shuffle(); // two more here to account for the generalization test
@@ -14,9 +14,9 @@ Experigen.initialize = function () {
   var visuals = getAnimalsArray().concat(getObjectsArray()).shuffle();
 
   var oneSyllableTrain = oneSyllableWords.slice(0, numberOfTrainingItems);
-  var oneSyllableTest = oneSyllableWords.slice(numberOfTrainingItems, oneSyllableWords.length - 1);
+  var oneSyllableTest = oneSyllableWords.slice(numberOfTrainingItems, oneSyllableWords.length - 3);
   var twoSyllableTrain = twoSyllableWords.slice(0, numberOfTrainingItems);
-  var twoSyllableTest = twoSyllableWords.slice(numberOfTrainingItems, twoSyllableWords.length - 1);
+  var twoSyllableTest = twoSyllableWords.slice(numberOfTrainingItems, twoSyllableWords.length - 3);
 
   var oneSyllableOverlapWord = oneSyllableWords[oneSyllableWords.length - 1];
   var twoSyllableOverlapWord = twoSyllableWords[twoSyllableWords.length - 1];
